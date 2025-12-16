@@ -4,10 +4,16 @@ defmodule Exit.MixProject do
   def project do
     [
       app: :exit,
-      version: "0.1.0",
+      version: "0.2.0",
       elixir: "~> 1.19",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      package: [
+        maintainers: ["Matthew Graham"],
+        description: "A set of common utility functions for iterating enumerables",
+        licenses: ["MIT"],
+        links: %{"GitHub" => "https://github.com/mdg/exit"},
+      ],
     ]
   end
 
