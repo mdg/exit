@@ -35,7 +35,7 @@ defmodule Exit do
   @doc """
   Rotate a list by moving the first item from the beginning to the end
   """
-  @spec rotate([any()]) :: [any()]
+  @spec rotate([a :: term()]) :: [a :: term()]
   def rotate(items)
 
   def rotate([]), do: []
@@ -48,6 +48,7 @@ defmodule Exit do
     t ++ [h]
   end
 
+  @spec rotate([a :: term()], integer()) :: [a :: term()]
   def rotate(items, n) do
     {h, t} = Enum.split(items, n)
     t ++ h
@@ -56,6 +57,7 @@ defmodule Exit do
   @doc """
   Rotate through items while each item is true for f
   """
+  @spec rotate_while([a :: term], (a :: term() -> as_boolean(term()))) :: [a :: term()]
   def rotate_while(items, f) do
     {h, t} = Enum.split_while(items, f)
     t ++ h
@@ -64,12 +66,13 @@ defmodule Exit do
   @doc """
   Rotate through items until the item is true for f
   """
+  @spec rotate_until([a :: term], (a :: term() -> as_boolean(term()))) :: [a :: term()]
   def rotate_until(items, f) do
     {h, t} = Enum.split_while(items, &(not f.(&1)))
     t ++ h
   end
 
-  @spec map_to_id([term()]) :: [term()]
+  @spec map_to_id([%{id: a :: term()}]) :: [a :: term()]
   def map_to_id(items) do
     Enum.map(items, & &1.id)
   end
@@ -84,6 +87,7 @@ defmodule Exit do
   elements belonging to the first and second maps, respectively.
   If a map does not have an element, the tuple will contain a nil.
   """
+  @spec zip_maps(map(), map()) :: %{any() => tuple()}
   def zip_maps(m0, m1) do
     first =
       Enum.reduce(m0, %{}, fn {k, v0}, acc ->
@@ -106,6 +110,7 @@ defmodule Exit do
 
   The same behavior as zip_maps/2 but with 3 maps.
   """
+  @spec zip_maps(map(), map(), map()) :: %{any() => tuple()}
   def zip_maps(m0, m1, m2) do
     first =
       Enum.reduce(m0, %{}, fn {k, v0}, acc ->
