@@ -4,7 +4,7 @@ defmodule Exit.MixProject do
   def project do
     [
       app: :exit,
-      version: "0.2.0",
+      version: "0.3.0",
       elixir: "~> 1.19",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
@@ -27,7 +27,7 @@ defmodule Exit.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:dialyxir, "~> 1.4", only: [:dev], runtime: false},
+      {:dialyxir, "~> 1.4", only: :dev, runtime: false},
       {:ex_doc, "~> 0.32", only: :dev, runtime: false},
     ]
   end

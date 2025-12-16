@@ -2,6 +2,8 @@ defmodule Exit do
   @moduledoc """
   Various iteration utilities
 
+  ## Description
+
   Mostly wrappers for common patterns using Enum module
   """
 
@@ -14,18 +16,21 @@ defmodule Exit do
   end
 
   @doc """
-  Convert a list of maps to a map of keys to the maps
+  Convert a list of maps to a map of items keyed by a given field
+
+  Will raise an exception if the given field does not exist.
+  Also works on a list of enums with an element index.
   """
-  @spec key_on([map()], term()) :: map()
-  def key_on(items, key_name) when is_atom(key_name) do
+  @spec key_on!([map() | tuple()], term()) :: map()
+  def key_on!(items, key_name) when is_atom(key_name) do
     Map.new(items, fn i -> {Map.fetch!(i, key_name), i} end)
   end
 
-  def key_on(items, key_name) when is_binary(key_name) do
+  def key_on!(items, key_name) when is_binary(key_name) do
     Map.new(items, fn i -> {Map.fetch!(i, key_name), i} end)
   end
 
-  def key_on(items, index) when is_integer(index) do
+  def key_on!(items, index) when is_integer(index) do
     Map.new(items, fn
       i when is_tuple(i) -> {elem(i, index), i}
       i -> {Map.fetch!(i, index), i}
@@ -48,6 +53,11 @@ defmodule Exit do
     t ++ [h]
   end
 
+  @doc """
+  Rotate a list n times
+
+  Move the first n items to the back of the list
+  """
   @spec rotate([a :: term()], integer()) :: [a :: term()]
   def rotate(items, n) do
     {h, t} = Enum.split(items, n)
@@ -72,11 +82,17 @@ defmodule Exit do
     t ++ h
   end
 
+  @doc """
+  Given a list of maps with an id field, return a list of the ids
+  """
   @spec map_to_id([%{id: a :: term()}]) :: [a :: term()]
   def map_to_id(items) do
     Enum.map(items, & &1.id)
   end
 
+  @doc """
+  Given a list, reject any that are nil
+  """
   @spec reject_nil([term()]) :: [term()]
   def reject_nil(items) do
     Enum.reject(items, &is_nil/1)
@@ -108,7 +124,7 @@ defmodule Exit do
   @doc """
   Zip 3 maps
 
-  The same behavior as zip_maps/2 but with 3 maps.
+  The same behavior as `zip_maps/2` but with 3 maps.
   """
   @spec zip_maps(map(), map(), map()) :: %{any() => tuple()}
   def zip_maps(m0, m1, m2) do
