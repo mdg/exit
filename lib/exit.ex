@@ -16,7 +16,7 @@ defmodule Exit do
   @doc """
   Convert a list of maps to a map of keys to the maps
   """
-  @spec key_by([map()], term()) :: map()
+  @spec key_on([map()], term()) :: map()
   def key_on(items, key_name) when is_atom(key_name) do
     Map.new(items, fn i -> {Map.fetch!(i, key_name), i} end)
   end
@@ -35,6 +35,7 @@ defmodule Exit do
   @doc """
   Rotate a list by moving the first item from the beginning to the end
   """
+  @spec rotate([any()]) :: [any()]
   def rotate(items)
 
   def rotate([]), do: []
