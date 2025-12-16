@@ -32,6 +32,42 @@ defmodule Exit do
     end)
   end
 
+  @doc """
+  Rotate a list by moving the first item from the beginning to the end
+  """
+  def rotate(items)
+
+  def rotate([]), do: []
+
+  def rotate([one]), do: [one]
+
+  def rotate([a, b]), do: [b, a]
+
+  def rotate([h | t]) do
+    t ++ [h]
+  end
+
+  def rotate(items, n) do
+    {h, t} = Enum.split(items, n)
+    t ++ h
+  end
+
+  @doc """
+  Rotate through items while each item is true for f
+  """
+  def rotate_while(items, f) do
+    {h, t} = Enum.split_while(items, f)
+    t ++ h
+  end
+
+  @doc """
+  Rotate through items until the item is true for f
+  """
+  def rotate_until(items, f) do
+    {h, t} = Enum.split_while(items, &(not f.(&1)))
+    t ++ h
+  end
+
   @spec map_to_id([term()]) :: [term()]
   def map_to_id(items) do
     Enum.map(items, & &1.id)
