@@ -69,7 +69,7 @@ defmodule ExitTest do
         %{user_id: 2, status: :away},
         # first non-away user
         %{user_id: 3, status: :active},
-        %{user_id: 4, status: :active}
+        %{user_id: 4, status: :active},
       ]
 
       # Rotate while users are away (inactive)
@@ -79,7 +79,7 @@ defmodule ExitTest do
         %{user_id: 3, status: :active},
         %{user_id: 4, status: :active},
         %{user_id: 1, status: :away},
-        %{user_id: 2, status: :away}
+        %{user_id: 2, status: :away},
       ]
 
       assert actual == expected

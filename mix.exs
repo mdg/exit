@@ -20,7 +20,7 @@ defmodule Exit.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      extra_applications: [:logger],
     ]
   end
 
@@ -29,6 +29,7 @@ defmodule Exit.MixProject do
     [
       {:dialyxir, "~> 1.4", only: :dev, runtime: false},
       {:ex_doc, "~> 0.32", only: :dev, runtime: false},
+      {:freedom_formatter, "~> 2.1", only: [:dev, :test], runtime: false},
     ]
   end
 end
