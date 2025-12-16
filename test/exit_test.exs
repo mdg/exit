@@ -63,9 +63,12 @@ defmodule ExitTest do
       # Practical example: finding next active player after a specific user
       # Simulating user hands where we want to rotate past inactive users
       user_hands = [
-        %{user_id: 1, status: :away},    # will be rotated
-        %{user_id: 2, status: :away},    # will be rotated
-        %{user_id: 3, status: :active},  # first non-away user
+        # will be rotated
+        %{user_id: 1, status: :away},
+        # will be rotated
+        %{user_id: 2, status: :away},
+        # first non-away user
+        %{user_id: 3, status: :active},
         %{user_id: 4, status: :active}
       ]
 
