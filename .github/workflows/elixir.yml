@@ -9,7 +9,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches-ignore: [ "main" ]
 
 permissions:
   contents: read
@@ -18,7 +18,10 @@ jobs:
   build:
 
     name: Build and test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
+
+    env:
+      ImageOS: ubuntu22
 
     steps:
     - uses: actions/checkout@v4
