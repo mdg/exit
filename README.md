@@ -1,6 +1,12 @@
 # Exit
 
-**TODO: Add description**
+[![Module Version](https://img.shields.io/hexpm/v/exit.svg)](https://hex.pm/packages/exit)
+[![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/exit/)
+[![Total Downloads](https://img.shields.io/hexpm/dt/exit.svg)](https://hex.pm/packages/exit)
+[![License](https://img.shields.io/hexpm/l/exit.svg)](https://github.com/mdg/exit/blob/main/LICENSE)
+[![Last Updated](https://img.shields.io/github/last-commit/mdg/exit.svg)](https://github.com/mdg/exit/commits/main)
+
+Various iteration utilities for Enumerable types in Elixir
 
 ## Installation
 
@@ -10,7 +16,7 @@ by adding `exit` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:exit, "~> 0.1.0"}
+    {:exit, "~> 0.3.0"}
   ]
 end
 ```
