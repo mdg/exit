@@ -1,5 +1,6 @@
 # Exit
 
+[![CI](https://github.com/mdg/exit/actions/workflows/elixir.yml/badge.svg)](https://github.com/mdg/exit/actions/workflows/elixir.yml)
 [![Module Version](https://img.shields.io/hexpm/v/exit.svg)](https://hex.pm/packages/exit)
 [![Hex Docs](https://img.shields.io/badge/hex-docs-lightgreen.svg)](https://hexdocs.pm/exit/Exit.html)
 [![Total Downloads](https://img.shields.io/hexpm/dt/exit.svg)](https://hex.pm/packages/exit)
