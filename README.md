@@ -16,7 +16,7 @@ by adding `exit` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:exit, "~> 0.3.0"}
+    {:exit, "~> 0.3.0"},
   ]
 end
 ```
