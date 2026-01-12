@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.4.0
+
+- New features
+  - key_by_id/1
+
 ## v0.3.0
 
 - Backwards incompatible

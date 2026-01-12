@@ -38,6 +38,13 @@ defmodule Exit do
   end
 
   @doc """
+  Key an enumerable on the id field
+  """
+  def key_by_id(items) do
+    Enum.map(items, & &1.id)
+  end
+
+  @doc """
   Rotate a list by moving the first item from the beginning to the end
   """
   @spec rotate([a :: term()]) :: [a :: term()]
