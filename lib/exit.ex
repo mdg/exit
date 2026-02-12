@@ -10,14 +10,14 @@ defmodule Exit do
   @doc """
   Find where a given field matches the given value
   """
-  def find_by(items, fld, val) when is_atom(fld) do
+  def find(items, fld, val) when is_atom(fld) do
     Enum.find(items, fn i -> Map.fetch(i, fld) == {:ok, val} end)
   end
 
   @doc """
   Find an object with fields that match
   """
-  def find_by(items, match) when is_map(match) do
+  def find(items, match) when is_map(match) do
     Enum.find(items, fn i ->
       Enum.all?(match, fn {key, val} ->
         Map.fetch(i, key) == {:ok, val}
@@ -28,14 +28,14 @@ defmodule Exit do
   @doc """
   Find where a given field matches the given value
   """
-  def find_by!(items, fld, val) when is_atom(fld) do
+  def find!(items, fld, val) when is_atom(fld) do
     Enum.find(items, fn i -> Map.fetch!(i, fld) == val end)
   end
 
   @doc """
   Find an object with fields that match
   """
-  def find_by!(items, match) when is_map(match) do
+  def find!(items, match) when is_map(match) do
     Enum.find(items, fn i ->
       Enum.all?(match, fn {key, val} ->
         Map.fetch!(i, key) == val
