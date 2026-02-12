@@ -10,7 +10,7 @@ defmodule Exit do
   @doc """
   Find where a given field matches the given value
   """
-  def find(items, fld, val) when is_atom(fld) do
+  def find(items, fld, val) do
     Enum.find(items, fn i -> Map.fetch(i, fld) == {:ok, val} end)
   end
 
@@ -28,7 +28,7 @@ defmodule Exit do
   @doc """
   Find where a given field matches the given value
   """
-  def find!(items, fld, val) when is_atom(fld) do
+  def find!(items, fld, val) do
     Enum.find(items, fn i -> Map.fetch!(i, fld) == val end)
   end
 
