@@ -24,6 +24,86 @@ defmodule ExitTest do
     assert Map.fetch!(actual, "abc") == {"abc1", "abc2", "abc3"}
   end
 
+  describe "find_by/3" do
+    test "finds item when field matches value" do
+      items = [%{id: 1, name: "Alice"}, %{id: 2, name: "Bob"}, %{id: 3, name: "Carol"}]
+      actual = Exit.find_by(items, :name, "Bob")
+
+      assert actual == %{id: 2, name: "Bob"}
+    end
+
+    test "returns nil when field value is not found" do
+      items = [%{id: 1, name: "Alice"}, %{id: 2, name: "Bob"}, %{id: 3, name: "Carol"}]
+      actual = Exit.find_by(items, :name, "David")
+
+      assert actual == nil
+    end
+  end
+
+  describe "find_by/2" do
+    test "finds item when multiple fields match" do
+      items = [
+        %{id: 1, name: "Alice", age: 30, city: "NYC"},
+        %{id: 2, name: "Bob", age: 25, city: "SF"},
+        %{id: 3, name: "Carol", age: 30, city: "NYC"}
+      ]
+      actual = Exit.find_by(items, %{age: 30, city: "NYC"})
+
+      assert actual == %{id: 1, name: "Alice", age: 30, city: "NYC"}
+    end
+
+    test "returns nil when no item matches all criteria" do
+      items = [
+        %{id: 1, name: "Alice", age: 30, city: "NYC"},
+        %{id: 2, name: "Bob", age: 25, city: "SF"},
+        %{id: 3, name: "Carol", age: 30, city: "NYC"}
+      ]
+      actual = Exit.find_by(items, %{age: 35, city: "LA"})
+
+      assert actual == nil
+    end
+  end
+
+  describe "find_by!/3" do
+    test "finds item when field matches value" do
+      items = [%{id: 1, name: "Alice"}, %{id: 2, name: "Bob"}, %{id: 3, name: "Carol"}]
+      actual = Exit.find_by!(items, :name, "Bob")
+
+      assert actual == %{id: 2, name: "Bob"}
+    end
+
+    test "returns nil when field value is not found" do
+      items = [%{id: 1, name: "Alice"}, %{id: 2, name: "Bob"}, %{id: 3, name: "Carol"}]
+      actual = Exit.find_by!(items, :name, "David")
+
+      assert actual == nil
+    end
+  end
+
+  describe "find_by!/2" do
+    test "finds item when multiple fields match" do
+      items = [
+        %{id: 1, name: "Alice", age: 30, city: "NYC"},
+        %{id: 2, name: "Bob", age: 25, city: "SF"},
+        %{id: 3, name: "Carol", age: 30, city: "NYC"}
+      ]
+      actual = Exit.find_by!(items, %{age: 30, city: "NYC"})
+
+      assert actual == %{id: 1, name: "Alice", age: 30, city: "NYC"}
+    end
+
+    test "returns nil when no item matches all criteria" do
+      items = [
+        %{id: 1, name: "Alice", age: 30, city: "NYC"},
+        %{id: 2, name: "Bob", age: 25, city: "SF"},
+        %{id: 3, name: "Carol", age: 30, city: "NYC"}
+      ]
+      actual = Exit.find_by!(items, %{age: 35, city: "LA"})
+
+      assert actual == nil
+    end
+  end
+
   describe "rotate_while/2" do
     test "rotates numbers while less than threshold" do
       # Rotate while numbers are less than 5

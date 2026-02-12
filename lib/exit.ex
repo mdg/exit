@@ -8,6 +8,42 @@ defmodule Exit do
   """
 
   @doc """
+  Find where a given field matches the given value
+  """
+  def find_by(items, fld, val) when is_atom(fld) do
+    Enum.find(items, fn i -> Map.fetch(i, fld) == {:ok, val} end)
+  end
+
+  @doc """
+  Find an object with fields that match
+  """
+  def find_by(items, match) when is_map(match) do
+    Enum.find(items, fn i ->
+      Enum.all?(match, fn {key, val} ->
+        Map.fetch(i, key) == {:ok, val}
+      end)
+    end)
+  end
+
+  @doc """
+  Find where a given field matches the given value
+  """
+  def find_by!(items, fld, val) when is_atom(fld) do
+    Enum.find(items, fn i -> Map.fetch!(i, fld) == val end)
+  end
+
+  @doc """
+  Find an object with fields that match
+  """
+  def find_by!(items, match) when is_map(match) do
+    Enum.find(items, fn i ->
+      Enum.all?(match, fn {key, val} ->
+        Map.fetch!(i, key) == val
+      end)
+    end)
+  end
+
+  @doc """
   Convert a list of maps to a map of keys to the maps
   """
   @spec key_by([map()], term()) :: map()
