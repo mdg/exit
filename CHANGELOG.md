@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.4.1
+
+- New features
+  - find_by/2
+  - find_by!/2
+  - find_by/3
+  - find_by!/3
+
 ## v0.4.0
 
 - New features
