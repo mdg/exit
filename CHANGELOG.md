@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.4.2
+
+- Backwards incompatible
+  - Rename find_by/n to find/n
+  - Rename find_by!/n to find!/n
+
 ## v0.4.1
 
 - New features
