@@ -142,6 +142,17 @@ defmodule Exit do
   end
 
   @doc """
+  If test is true, filter items with the f function, otherwise return items unchanged
+  """
+  def filter_if(items, test, f) do
+    if test do
+      Enum.filter(items, f)
+    else
+      items
+    end
+  end
+
+  @doc """
   Given 2 maps. zip them where the value is a tuple with the first and second
   elements belonging to the first and second maps, respectively.
   If a map does not have an element, the tuple will contain a nil.

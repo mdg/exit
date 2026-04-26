@@ -165,4 +165,27 @@ defmodule ExitTest do
       assert actual == expected
     end
   end
+
+  describe "filter_if/3" do
+    test "filters items when test is true" do
+      items = [1, 2, 3, 4, 5]
+      actual = Exit.filter_if(items, true, &(&1 > 2))
+
+      assert actual == [3, 4, 5]
+    end
+
+    test "returns unchanged when test is false" do
+      items = [1, 2, 3, 4, 5]
+      actual = Exit.filter_if(items, false, &(&1 > 2))
+
+      assert actual == [1, 2, 3, 4, 5]
+    end
+
+    test "filters with multiple criteria" do
+      items = [%{id: 1, active: true}, %{id: 2, active: false}, %{id: 3, active: true}]
+      actual = Exit.filter_if(items, true, &(&1.active == true))
+
+      assert actual == [%{id: 1, active: true}, %{id: 3, active: true}]
+    end
+  end
 end

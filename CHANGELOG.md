@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.4.3
+
+- New feature
+  - filter_if/3
+
 ## v0.4.2
 
 - Backwards incompatible
