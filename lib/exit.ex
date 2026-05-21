@@ -134,6 +134,15 @@ defmodule Exit do
   end
 
   @doc """
+  Get a random element from a list or return a default val if empty
+  """
+  def random_or(items, or_val)
+
+  def random_or([], or_val), do: or_val
+
+  def random_or(items, _or_val), do: Enum.random(items)
+
+  @doc """
   Given a list, reject any that are nil
   """
   @spec reject_nil([term()]) :: [term()]

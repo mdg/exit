@@ -4,6 +4,7 @@
 
 - New feature
   - filter_if/3
+  - random_or/2
 
 ## v0.4.2
 
