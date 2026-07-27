@@ -77,7 +77,7 @@ defmodule Exit do
   Key an enumerable on the id field
   """
   def key_by_id(items) do
-    Enum.map(items, & &1.id)
+    key_on!(items, :id)
   end
 
   @doc """
